@@ -12,12 +12,12 @@ module Fastlane
       end
 
       def self.setup_output_paths(params)
-        unless ENV["FASTLANE_CI_ROOT"]
+        unless ENV["FL_OUTPUT_DIR"]
           UI.message "Skipping Log Path setup as FASTLANE_CI_ROOT is unset"
           return
         end
 
-        root = Pathname.new(ENV["FASTLANE_CI_ROOT"])
+        root = Pathname.new(ENV["FL_OUTPUT_DIR"])
         ENV["SCAN_OUTPUT_DIRECTORY"] = (root + "scan").to_s
         ENV["GYM_OUTPUT_DIRECTORY"] = (root + "gym").to_s
         ENV["FL_BUILDLOG_PATH"] = (root + "buildlogs").to_s

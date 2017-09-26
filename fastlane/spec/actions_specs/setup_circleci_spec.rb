@@ -2,7 +2,7 @@ describe Fastlane do
   describe Fastlane::Actions::SetupCircleCiAction do
     describe "#setup_output_paths" do
       before do
-        stub_const("ENV", { "FASTLANE_CI_ROOT" => "/dev/null" })
+        stub_const("ENV", { "FL_OUTPUT_DIR" => "/dev/null" })
       end
 
       it "sets the SCAN_OUTPUT_DIRECTORY" do
