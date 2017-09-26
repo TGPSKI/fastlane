@@ -28,11 +28,9 @@ module Fastlane
           return
         end
 
-        # Create a temporary keychain
-        password = "" # we don't need a password, as the keychain gets removed after each run anyway
         keychain_name = "fastlane_tmp_keychain"
         ENV["MATCH_KEYCHAIN_NAME"] = keychain_name
-        ENV["MATCH_KEYCHAIN_PASSWORD"] = password
+        ENV["MATCH_KEYCHAIN_PASSWORD"] = ""
 
         UI.message "Creating temporary keychain: \"#{keychain_name}\"."
         Actions::CreateKeychainAction.run(
@@ -41,8 +39,9 @@ module Fastlane
           unlock: true,
           timeout: 3600,
           lock_when_sleeps: true,
-          password: password
+          password: ""
         )
+
         UI.message("Enabling readonly mode for CircleCI")
         ENV["MATCH_READONLY"] = true.to_s
       end
