@@ -18,9 +18,9 @@ module Fastlane
         end
 
         root = Pathname.new(ENV["FASTLANE_CI_ROOT"])
-        ENV["SCAN_OUTPUT_DIRECTORY"] = root + "/scan"
-        ENV["GYM_OUTPUT_DIRECTORY"] = root + "/gym"
-        ENV["FL_BUILDLOG_PATH"] = root + "/buildlogs"
+        ENV["SCAN_OUTPUT_DIRECTORY"] = (root + "scan").to_s
+        ENV["GYM_OUTPUT_DIRECTORY"] = (root + "gym").to_s
+        ENV["FL_BUILDLOG_PATH"] = (root + "buildlogs").to_s
         ENV["SCAN_INCLUDE_SIMULATOR_LOGS"] = true.to_s
       end
 

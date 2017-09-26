@@ -1,5 +1,16 @@
 describe Fastlane do
   describe Fastlane::Actions::SetupCircleCiAction do
+    describe "#setup_output_paths" do
+      before do
+        stub_const("ENV", { "FASTLANE_CI_ROOT" => "/dev/null" })
+      end
+
+      it "sets the SCAN_OUTPUT_DIRECTORY" do
+        described_class.setup_output_paths(nil)
+        expect(ENV["SCAN_OUTPUT_DIRECTORY"]).to eql("/dev/null/scan")
+      end
+    end
+
     describe "#should_run" do
       context "when running on CI" do
         before do
