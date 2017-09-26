@@ -9,6 +9,16 @@ describe Fastlane do
         described_class.setup_output_paths(nil)
         expect(ENV["SCAN_OUTPUT_DIRECTORY"]).to eql("/dev/null/scan")
       end
+
+      it "sets the GYM_OUTPUT_DIRECTORY" do
+        described_class.setup_output_paths(nil)
+        expect(ENV["GYM_OUTPUT_DIRECTORY"]).to eql("/dev/null/gym")
+      end
+
+      it "sets the FL_BUILDLOG_PATH" do
+        described_class.setup_output_paths(nil)
+        expect(ENV["FL_BUILDLOG_PATH"]).to eql("/dev/null/buildlogs")
+      end
     end
 
     describe "#should_run" do
