@@ -1,5 +1,5 @@
 describe Fastlane do
-  describe Fastlane::Actions::SetupCircleCIAction do
+  describe Fastlane::Actions::SetupCircleCiAction do
     describe "#should_run" do
       context "when running on CI" do
         before do

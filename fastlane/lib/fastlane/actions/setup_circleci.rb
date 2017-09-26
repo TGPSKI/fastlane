@@ -1,6 +1,6 @@
 module Fastlane
   module Actions
-    class SetupCircleCIAction < Action
+    class SetupCircleCiAction < Action
       def self.run(params)
         unless should_run?(params)
           UI.message "Not running on CI, skipping `setup_circle_ci`"
