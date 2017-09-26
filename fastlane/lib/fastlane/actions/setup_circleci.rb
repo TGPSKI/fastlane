@@ -3,7 +3,7 @@ module Fastlane
     class SetupCircleCIAction < Action
       def self.run(params)
         unless should_run?(params)
-          UI.message "Not running on CI, skipping `setup_circleci`"
+          UI.message "Not running on CI, skipping `setup_circle_ci`"
           return
         end
 
@@ -20,6 +20,8 @@ module Fastlane
         root = Pathname.new(ENV["FASTLANE_CI_ROOT"])
         ENV["SCAN_OUTPUT_DIRECTORY"] = root + "/scan"
         ENV["GYM_OUTPUT_DIRECTORY"] = root + "/gym"
+        ENV["FL_BUILDLOG_PATH"] = root + "/buildlogs"
+        ENV["SCAN_INCLUDE_SIMULATOR_LOGS"] = true.to_s
       end
 
       def self.setup_keychain
@@ -88,7 +90,7 @@ module Fastlane
 
       def self.example_code
         [
-          'setup_circleci'
+          'setup_circle_ci'
         ]
       end
 
