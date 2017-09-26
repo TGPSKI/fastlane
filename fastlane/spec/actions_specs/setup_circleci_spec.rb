@@ -7,11 +7,11 @@ describe Fastlane do
         end
 
         it "returns true when :force is true" do
-          expect(described_class.should_run?({:force => true})).to eql(true)
+          expect(described_class.should_run?({ force: true })).to eql(true)
         end
 
         it "returns true when :force is false" do
-          expect(described_class.should_run?({:force => false})).to eql(true)
+          expect(described_class.should_run?({ force: false })).to eql(true)
         end
       end
 
@@ -21,11 +21,11 @@ describe Fastlane do
         end
 
         it "returns false when :force is not set" do
-          expect(described_class.should_run?({:force => false})).to eql(false)
+          expect(described_class.should_run?({ force: false })).to eql(false)
         end
 
         it "returns true when :force is set" do
-          expect(described_class.should_run?({:force => true})).to eql(true)
+          expect(described_class.should_run?({ force: true })).to eql(true)
         end
       end
     end
@@ -33,7 +33,7 @@ describe Fastlane do
     describe "#setup_keychain" do
       context "when MATCH_KEYCHAIN_NAME is set" do
         it "skips the setup process" do
-          stub_const("ENV", {"MATCH_KEYCHAIN_NAME" => "anything"})
+          stub_const("ENV", { "MATCH_KEYCHAIN_NAME" => "anything" })
           expect(Fastlane::UI).to receive(:message).with "Skipping Keychain setup as a keychain was already specified"
           described_class.setup_keychain
         end
